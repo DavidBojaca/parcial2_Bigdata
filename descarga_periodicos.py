@@ -13,6 +13,8 @@ def descarga_contenido(url, bucket, nombre):
                                                today)).put(Body=content)
 
 
-descarga_contenido('https://www.eltiempo.com', 'parcial2-periodicos', 'ElTiempo-')
+descarga_contenido('https://www.eltiempo.com',
+                   'parcial2-periodicos',
+                   'ElTiempo-')
 descarga_contenido('https://www.elespectador.com', 'parcial2-periodicos',
-              'ElEspectador-')
+                   'ElEspectador-')
