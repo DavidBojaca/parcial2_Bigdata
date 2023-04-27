@@ -1,0 +1,42 @@
+{
+  "name" : "job Noticias",
+  "description" : "",
+  "role" : "arn:aws:iam::612408346256:role/LabRole",
+  "executionProperty" : {
+    "maxConcurrentRuns" : 1
+  },
+  "command" : {
+    "name" : "glueetl",
+    "scriptLocation" : "s3://aws-glue-assets-612408346256-us-east-1/scripts/job Noticias.py",
+    "pythonVersion" : "3"
+  },
+  "defaultArguments" : {
+    "--enable-metrics" : "true",
+    "--enable-spark-ui" : "true",
+    "--spark-event-logs-path" : "s3://aws-glue-assets-612408346256-us-east-1/sparkHistoryLogs/",
+    "--enable-job-insights" : "true",
+    "--enable-glue-datacatalog" : "true",
+    "--enable-continuous-cloudwatch-log" : "true",
+    "--job-bookmark-option" : "job-bookmark-enable",
+    "--job-language" : "python",
+    "--TempDir" : "s3://aws-glue-assets-612408346256-us-east-1/temporary/"
+  },
+  "connections" : {
+    "connections" : [ "connection Parcial" ]
+  },
+  "maxRetries" : 0,
+  "allocatedCapacity" : 10,
+  "timeout" : 2880,
+  "maxCapacity" : 10.0,
+  "glueVersion" : "3.0",
+  "numberOfWorkers" : 10,
+  "workerType" : "G.1X",
+  "executionClass" : "STANDARD",
+  "codeGenConfigurationNodes" : "{\"node-1682616573600\":{\"ApplyMapping\":{\"Inputs\":[\"node-1682616567421\"],\"Mapping\":[{\"Dropped\":false,\"FromPath\":[\"col1\"],\"FromType\":\"string\",\"ToKey\":\"categoria\",\"ToType\":\"string\"},{\"Dropped\":false,\"FromPath\":[\"col2\"],\"FromType\":\"string\",\"ToKey\":\"link\",\"ToType\":\"string\"},{\"Dropped\":false,\"FromPath\":[\"col0\"],\"FromType\":\"string\",\"ToKey\":\"titulo\",\"ToType\":\"string\"}],\"Name\":\"Change Schema\"}},\"node-1\":{\"CatalogSource\":{\"Database\":\"news\",\"Name\":\"Data Catalog table\",\"Table\":\"periodico_eltiempo\"}},\"node-2\":{\"ApplyMapping\":{\"Inputs\":[\"node-1\"],\"Mapping\":[{\"Dropped\":false,\"FromPath\":[\"col1\"],\"FromType\":\"string\",\"ToKey\":\"categoria\",\"ToType\":\"string\"},{\"Dropped\":false,\"FromPath\":[\"col2\"],\"FromType\":\"string\",\"ToKey\":\"link\",\"ToType\":\"string\"},{\"Dropped\":false,\"FromPath\":[\"col0\"],\"FromType\":\"string\",\"ToKey\":\"titulo\",\"ToType\":\"string\"}],\"Name\":\"ApplyMapping\"}},\"node-3\":{\"CatalogTarget\":{\"Database\":\"news glue\",\"Inputs\":[\"node-2\"],\"Name\":\"Data Catalog table\",\"Table\":\"periodicos_el_tiempo\"}},\"node-1682616567421\":{\"CatalogSource\":{\"Database\":\"news\",\"Name\":\"AWS Glue Data Catalog\",\"Table\":\"periodico_elespectador\"}},\"node-1682616597802\":{\"CatalogTarget\":{\"Database\":\"news glue\",\"Inputs\":[\"node-1682616573600\"],\"Name\":\"AWS Glue Data Catalog\",\"Table\":\"periodicos_el_espectador\"}}}",
+  "sourceControlDetails" : {
+    "provider" : "GITHUB",
+    "repository" : "parcial2_Bigdata",
+    "branch" : "main",
+    "folder" : "jobnoticias"
+  }
+}
