@@ -58,6 +58,7 @@ jobs:
         run: |
           source env/bin/activate
           aws s3 cp analisis_periodicos.py s3://aws-glue-assets-612408346256-us-east-1/scripts/
-          aws s3 cp descarga_periodicos.py s3://aws-glue-assets-612408346256-us-east-1/scripts/
+          aws s3 cp descarga_periodicos.py s3://aws-glue-assets-612408346256-us-east-1/scripts/ 
+        
 
         
